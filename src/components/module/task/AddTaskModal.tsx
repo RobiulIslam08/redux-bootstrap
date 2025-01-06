@@ -14,12 +14,22 @@ import {
   FormItem,
   FormLabel,
 } from "@/components/ui/form";
+import {
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+  } from "@/components/ui/select"
+  
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { DialogDescription } from "@radix-ui/react-dialog";
 import { useForm } from "react-hook-form";
 
 export function AddTaskModal() {
   const form = useForm();
-  const onSubmit = (data) => {
+  const onSubmit = (data: unknown) => {
 	console.log(data)
   }
   return (
@@ -28,20 +38,67 @@ export function AddTaskModal() {
         <Button variant="outline">Add Task</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
+		<DialogDescription className="sr-only">Fill up this form</DialogDescription>
         <DialogHeader>
           <DialogTitle>Add Task</DialogTitle>
         </DialogHeader>
 
         <Form {...form}>
-         <form onSubmit={form.handleSubmit(onSubmit)}>
+         <form className="space-y-2" onSubmit={form.handleSubmit(onSubmit)}>
 		 <FormField
             control={form.control}
             name="title"
             render={({field}) => (
               <FormItem>
-                <FormLabel />
+                <FormLabel>Title</FormLabel>
                 <FormControl>
-                  <Input placeholder="shadcn" {...field}></Input>
+                  <Input placeholder="shadcn" {...field} value={field.value ||''}></Input>
+                </FormControl>
+              </FormItem>
+            )}
+          />
+		 <FormField
+            control={form.control}
+            name="description"
+            render={({field}) => (
+              <FormItem>
+                <FormLabel>Description</FormLabel>
+                <FormControl>
+                  <Textarea placeholder="Type your message here." {...field} value={field.value ||''}></Textarea>
+                </FormControl>
+              </FormItem>
+            )}
+          />
+		 <FormField
+            control={form.control}
+            name="dueData"
+            render={({field}) => (
+              <FormItem>
+                <FormLabel>Due Date</FormLabel>
+                <FormControl>
+                  <Textarea placeholder="Type your message here." {...field} value={field.value ||''}></Textarea>
+                </FormControl>
+              </FormItem>
+            )}
+          />
+		 <FormField
+            control={form.control}
+            name="priority"
+            render={({field}) => (
+              <FormItem>
+                <FormLabel>Priority</FormLabel>
+                <FormControl>
+				<Select>
+  <SelectTrigger className="w-[180px]">
+    <SelectValue placeholder="Theme" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="light">Light</SelectItem>
+    <SelectItem value="dark">Dark</SelectItem>
+    <SelectItem value="system">System</SelectItem>
+  </SelectContent>
+</Select>
+
                 </FormControl>
               </FormItem>
             )}
