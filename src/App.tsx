@@ -8,7 +8,7 @@ function App() {
 
  
   return (
-    <div className=" background-body max-w-7xl mx-auto">
+    <div className=" background-body ">
     <Navbar></Navbar>
     <Outlet></Outlet>
    
