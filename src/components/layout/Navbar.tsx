@@ -1,6 +1,7 @@
 
 import { Link } from "react-router-dom";
 import logo from "../../assets/images.png";
+import { ModeToggle } from "../mode-toggle";
 
 const Navbar = () => {
 	return (
@@ -12,6 +13,10 @@ const Navbar = () => {
 			<div className="text-red-500 font-bold ">
 				<Link className="mr-10 hover:underline" to="/">Task</Link>
 				<Link className="hover:underline" to="/user">User</Link>
+			</div>
+			<div>
+				<ModeToggle></ModeToggle>
+
 			</div>
 
 		</nav>

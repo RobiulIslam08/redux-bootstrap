@@ -16,7 +16,7 @@ function App() {
     dispatch(decrement());
   };
   return (
-    <>
+    <div className=" background-body">
     <Navbar></Navbar>
     <Outlet></Outlet>
       <h1>Counter With Redux</h1>
@@ -25,7 +25,7 @@ function App() {
       <div>{count}</div>
       <Button onClick={handleDecrement}>Decrement</Button>
       
-    </>
+    </div>
   );
 }
 
