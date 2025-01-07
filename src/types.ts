@@ -5,5 +5,9 @@ export interface ITask {
 	dueDate: string; // ISO format for the date
 	isCompleted: boolean; // Corrected spelling from "isComplited"
 	priority: "high" | "medium" | "low"; // Assuming specific values for priority
+	assignedTo:string | null;
   }
-  
+export interface IUser {
+	name:string,
+	id:string
+}

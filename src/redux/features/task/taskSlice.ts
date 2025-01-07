@@ -10,7 +10,7 @@ const initialState: InitialState = {
   filter:"all"
   
 };
-type DraftData = Pick< ITask,"title" | "description" | "dueDate" | "priority">
+type DraftData = Pick< ITask,"title" | "description" | "dueDate" | "priority" | "assignedTo">
 const createTask = (taskData:DraftData):ITask => {
   return {id:nanoid(),isCompleted:false,...taskData}
 }
