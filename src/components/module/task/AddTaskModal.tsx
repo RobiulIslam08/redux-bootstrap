@@ -25,7 +25,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { DialogDescription } from "@radix-ui/react-dialog";
-import { useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
@@ -33,12 +33,13 @@ import { CalendarIcon } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
 import { useDispatch } from "react-redux";
 import { addTask } from "@/redux/features/task/taskSlice";
+import { ITask } from "@/types";
 
 export function AddTaskModal() {
   const dispatch = useDispatch()
   const form = useForm();
-  const onSubmit = (data: unknown) => {
-    dispatch(addTask(data))
+  const onSubmit:SubmitHandler<FieldValues> = (data) => {
+    dispatch(addTask(data as ITask))
 	console.log(data)
   }
   return (

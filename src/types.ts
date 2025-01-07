@@ -1,5 +1,5 @@
 export interface ITask {
-	id: number;
+	id: string;
 	title: string;
 	description: string; // Note: Corrected the spelling of "description"
 	dueDate: string; // ISO format for the date
