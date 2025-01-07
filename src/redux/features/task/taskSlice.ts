@@ -1,6 +1,6 @@
 import { RootState } from "@/redux/store";
 import { ITask } from "@/types";
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface InitialState {
   tasks: ITask[];
 }
@@ -12,7 +12,7 @@ const initialState: InitialState = {
       description: "Create home page, and routeing",
       dueDate: "2025-11",
       isCompleted: false,
-      priority: "High",
+      priority: "high",
     },
     {
       id: 2,
@@ -20,7 +20,7 @@ const initialState: InitialState = {
       description: "Create home page, and routeing",
       dueDate: "2025-11",
       isCompleted: false,
-      priority: "Medium",
+      priority: "medium",
     },
   ],
   
@@ -29,10 +29,14 @@ const initialState: InitialState = {
 const taskSlice = createSlice({
   name: "task",
   initialState,
-  reducers: {},
+  reducers: {
+    addTask:(state, action:PayloadAction<ITask>) => {
+      state.tasks.push(action.payload)
+    }
+  },
 });
 export const selectTask = (state: RootState) => {
   return state.todo.tasks;
 };
-
+export const {addTask} = taskSlice.actions
 export default taskSlice.reducer;
